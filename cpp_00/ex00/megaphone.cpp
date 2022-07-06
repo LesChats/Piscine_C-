@@ -12,8 +12,8 @@ int	main(int ac, char **av)
 	for (int j = 1; j < ac ; ++j) {
 		std::string arg(av[j]);
 		str.reserve(str.size() + arg.size() + 1);
-		for (size_t i = 0; i < arg.size(); ++i) {
-			str += std::toupper(arg[i]);
+		for (std::string::iterator it = arg.begin(); it != arg.end(); ++it) {
+			str += std::toupper(*it);
 		}
 		str += ' ';
 	}

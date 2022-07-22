@@ -30,7 +30,7 @@ EOC = \033[m
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $(OBJ_DIR)/$*)
 	@$(CC) $(CFLAGS) -c -o $@ $^ $(LIBS)
 	@echo "$(CYAN)Creating: $(@:%=%)$(EOC)"

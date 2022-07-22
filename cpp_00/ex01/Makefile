@@ -1,4 +1,4 @@
-NAME = phonebook
+NAME = phoneBook
 CC = c++
 INC =
 DEBUG =
@@ -9,7 +9,8 @@ LIBS =
 SRC_DIR = 
 OBJ_DIR = 
 
-SRC := megaphone.cpp
+SRC :=	PhoneBook.cpp \
+	main.cpp
 
 OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRC))
 
@@ -30,7 +31,7 @@ EOC = \033[m
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $(OBJ_DIR)/$*)
 	@$(CC) $(CFLAGS) -c -o $@ $^ $(LIBS)
 	@echo "$(CYAN)Creating: $(@:%=%)$(EOC)"

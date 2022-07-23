@@ -1,13 +1,14 @@
 #include <iostream>
 #include "PhoneBook.hpp"
 
-void	is_empty( std::string input, std::string phase ) {
+std::string	is_empty( std::string input, std::string phase ) {
 	
 	while ( input == "") {
 		std::cout << "Error: " << phase << " cannot be empty.\n";
 		std::cout << phase << " ?\n";
 		std::getline (std::cin, input);
 	}
+	return input;
 }
 
 int	main( void ) {
@@ -23,7 +24,10 @@ int	main( void ) {
 		else if (choice == "SEARCH" )
 			phoneBook.search_contact();
 		else if (choice == "EXIT" ) {
-			std::cout << "Beware: You have lost all your contacts :O !\n\n";
+			std::cout << " _____________________________________________\n";
+			std::cout << "/                                             \\\n";
+			std::cout << "| Beware: You have lost all your contacts :O ! |\n";
+			std::cout << "\\_____________________________________________/\n\n";
 			break;
 		}
 		std::cout << "What would you like to do ? ADD, SEARCH or EXIT ?\n";

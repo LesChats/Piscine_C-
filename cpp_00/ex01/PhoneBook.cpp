@@ -26,35 +26,35 @@ void	PhoneBook::new_contact( void ) {
 	std::getline ( std::cin, input );
 	if (std::cin.eof())
 		return;
-	is_empty( input, "First Name" );
+	input = is_empty( input, "First Name" );
 	firstName = input;
 
 	std::cout << "Last Name ?\n";
 	std::getline ( std::cin, input );
 	if (std::cin.eof())
 		return;
-	is_empty( input, "Last Name" );
+	input = is_empty( input, "Last Name" );
 	lastName = input;
 
 	std::cout << "Nickname ?\n";
 	std::getline ( std::cin, input );
 	if (std::cin.eof())
 		return;
-	is_empty( input, "Nickname" );
+	input = is_empty( input, "Nickname" );
 	nickName = input;
 
 	std::cout << "Phone Number ?\n";
 	std::getline ( std::cin, input );
 	if (std::cin.eof())
 		return;
-	is_empty( input, "Phone Number" );
+	input = is_empty( input, "Phone Number" );
 	phoneNumber = input;
 
 	std::cout << "Darkest Secret ?\n";
 	std::getline ( std::cin, input );
 	if (std::cin.eof())
 		return;
-	is_empty( input, "Darkest Secret" );
+	input = is_empty( input, "Darkest Secret" );
 	darkestSecret = input;
 
 	this->add_contact( firstName, lastName, nickName, phoneNumber, darkestSecret );
@@ -74,9 +74,12 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 
 void	PhoneBook::search_contact( void ) {
 
-	int	idx;
+	unsigned	idx = 0;
+	char		prov_idx;
 	std::cout << "	*** PHONEBOOK ***	\n";
+	std::cout << " ___________________________________________\n";
 	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |\n";
+	std::cout << " ___________________________________________\n";
 	if (get_idx() < 1)
 		return;
 	for (int i = 0; i < 8; ++i) {
@@ -86,18 +89,21 @@ void	PhoneBook::search_contact( void ) {
 		std::cout << "|" << std::setw(10) << is_too_big(i, 3);
 		std::cout << "|\n";
 	}
+	std::cout << " ___________________________________________\n";
 	std::cout << "Enter the index of the contact you want to read: \n";
-	std::cin >> idx;
-	if ( idx > 7 || idx < 0 || std::cin.eof() ) {
+	std::cin >> prov_idx;
+	if ( (unsigned)prov_idx - '0' > 7 || std::cin.eof() ) {
 		std::cout << "Error: the index must be in range [0-7]\n";
+		std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 		return;
 	}
+	idx = atoi(&prov_idx);
 	std::cout << "------------------\n";
-	std::cout << "First Name: " << contacts[idx].get_info( 1 ) << std::endl;
-	std::cout << "Last Name: " << contacts[idx].get_info( 2 ) << std::endl;
-	std::cout << "Nick Name: " << contacts[idx].get_info( 3 ) << std::endl;
-	std::cout << "Phone Number: " << contacts[idx].get_info( 4 ) << std::endl;
-	std::cout << "Darkest Secret: " << contacts[idx].get_info( 5 ) << std::endl;
+	std::cout << "First Name:	" << contacts[idx].get_info( 1 ) << std::endl;
+	std::cout << "Last Name:	" << contacts[idx].get_info( 2 ) << std::endl;
+	std::cout << "Nick Name:	" << contacts[idx].get_info( 3 ) << std::endl;
+	std::cout << "Phone Number:	" << contacts[idx].get_info( 4 ) << std::endl;
+	std::cout << "Darkest Secret:	" << contacts[idx].get_info( 5 ) << std::endl;
 	std::cout << "------------------\n";
 	std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 	return;

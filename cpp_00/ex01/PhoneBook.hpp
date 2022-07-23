@@ -3,7 +3,7 @@
 
 # include <string>
 
-void	is_empty( std::string input, std::string phase);
+std::string	is_empty( std::string input, std::string phase);
 
 class	PhoneBook {
 

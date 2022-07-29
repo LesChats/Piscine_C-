@@ -1,4 +1,4 @@
-NAME = phoneBook
+NAME = bankAccounts 
 CC = c++
 INC =
 DEBUG =
@@ -10,7 +10,7 @@ SRC_DIR =
 OBJ_DIR = 
 
 SRC :=	Account.cpp \
-	tests.cpp
+	test.cpp
 
 OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRC))
 

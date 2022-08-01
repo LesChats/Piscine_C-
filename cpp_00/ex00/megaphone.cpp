@@ -15,7 +15,8 @@ int	main(int ac, char **av)
 		for (std::string::iterator it = arg.begin(); it != arg.end(); ++it) {
 			str += std::toupper(*it);
 		}
-		str += ' ';
+		/* If you wish to deal with several args and have a readable result */
+		//str += ' ';
 	}
 	std::cout << str << '\n';
 	return 0;

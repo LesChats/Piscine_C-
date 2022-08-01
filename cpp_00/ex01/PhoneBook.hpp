@@ -13,7 +13,7 @@ public:
 
 /* PhoneBook methods */
 	void new_contact( void );
-	void add_contact( std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret); // each cannot be empty, all must be filled before adding contact.
+	void add_contact( std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 	void search_contact( void ); 
 	std::string is_too_big( int idx, int info );
 	int get_idx( void );
@@ -39,16 +39,5 @@ private:
 	Contact contacts[8];
 	int	idx;
 };
-
-/* SEARCH */
-/*
-
-|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |
-|         0|   Johanna|   Lecomte|   Shlurck|
-|         1|Aime Juli.|    Baudot|   Mimmiii|
-
-*/
-
-// alignement a droit : setw(10);
 
 #endif

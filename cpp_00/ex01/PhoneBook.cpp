@@ -1,6 +1,8 @@
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <string>
+#include <stdlib.h>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook( void ): idx() {
@@ -13,6 +15,12 @@ PhoneBook::~PhoneBook( void ) {
 	return;
 }
 
+PhoneBook::Contact::~Contact( void ) {
+	std::cout << "Contact destructor called\n";
+	return;
+}
+
+/* Creates a new contact */
 void	PhoneBook::new_contact( void ) {
 
 	std::string input;
@@ -62,6 +70,7 @@ void	PhoneBook::new_contact( void ) {
 	return;
 }
 
+/* Adds a contact in Phonebook after creation */
 void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret ) {
 	int pBookIdx = idx % 8;
 	Contact newContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
@@ -72,6 +81,7 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 	return;
 }
 
+/* Search contact in Phonebook */
 void	PhoneBook::search_contact( void ) {
 
 	unsigned	idx = 0;
@@ -109,6 +119,7 @@ void	PhoneBook::search_contact( void ) {
 	return;
 }
 
+/* Trims the extra characters and replace them by '.' */
 std::string	PhoneBook::is_too_big( int idx, int info ) {
 	std::string str = contacts[idx].get_info(info);
 	if (str.size() > 10) {
@@ -139,11 +150,8 @@ PhoneBook::Contact::Contact( std::string firstName, std::string lastName, std::s
 	return;
 }
 
-PhoneBook::Contact::~Contact( void ) {
-	std::cout << "Contact destructor called\n";
-	return;
-}
 
+/*get contact info depending on which is askeds*/
 std::string	PhoneBook::Contact::get_info( int info ) {
 
 	if (info == 1)

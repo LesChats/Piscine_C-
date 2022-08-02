@@ -89,10 +89,10 @@ void	PhoneBook::new_contact( void ) {
 void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, 
 	std::string phoneNumber, std::string darkestSecret ) {
 
-	int pBookIdx = idx % 8;
+	int pBookIdx = this->idx % 8;
 	Contact newContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	contacts[pBookIdx] = newContact;	
-	++idx;
+	++(this->idx);
 	
 	std::cout << "Contact added to PhoneBook :)\n";
 	return;
@@ -100,7 +100,7 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 
 int	PhoneBook::get_idx( void ) const {
 	
-	return idx;
+	return this->idx;
 }
 
 /* Trims the extra characters and replace them by '.' */

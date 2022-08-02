@@ -27,17 +27,18 @@ private:
 		~Contact( void ); // destructor
 
 	/* Contact methods */
-	std::string get_info( int info ) const;
+	std::string _get_info( int info ) const;
 
 	private:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickName;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
+		std::string	_darkestSecret;
 	};
-	Contact contacts[8];
-	int	idx;
+
+	Contact _contacts[8];
+	int	_idx;
 };
 
 #endif // _PHONEBOOK_H

@@ -11,7 +11,7 @@
 */
 //-----------------------------------------------------------------------------//
 
-PhoneBook::PhoneBook( void ): idx() {
+PhoneBook::PhoneBook( void ): _idx() {
 	
 	std::cout << "PhoneBook constructor called\n";
 	return;
@@ -89,10 +89,10 @@ void	PhoneBook::new_contact( void ) {
 void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, 
 	std::string phoneNumber, std::string darkestSecret ) {
 
-	int pBookIdx = this->idx % 8;
+	int pBookIdx = this->_idx % 8;
 	Contact newContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-	contacts[pBookIdx] = newContact;	
-	++(this->idx);
+	_contacts[pBookIdx] = newContact;	
+	++(this->_idx);
 	
 	std::cout << "Contact added to PhoneBook :)\n";
 	return;
@@ -100,13 +100,13 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 
 int	PhoneBook::get_idx( void ) const {
 	
-	return this->idx;
+	return this->_idx;
 }
 
 /* Trims the extra characters and replace them by '.' */
 std::string	PhoneBook::is_too_big( int idx, int info ) const {
 	
-	std::string str = contacts[idx].get_info(info);
+	std::string str = _contacts[idx]._get_info(info);
 	if (str.size() > 10) {
 		str.resize(10);
 		str.replace(str.size() - 1, 1 ,".");
@@ -142,11 +142,11 @@ void	PhoneBook::search_contact( void ) const {
 	}
 	idx = atoi(&prov_idx);
 	std::cout << "------------------\n";
-	std::cout << "First Name:	" << contacts[idx].get_info( 1 ) << std::endl;
-	std::cout << "Last Name:	" << contacts[idx].get_info( 2 ) << std::endl;
-	std::cout << "Nick Name:	" << contacts[idx].get_info( 3 ) << std::endl;
-	std::cout << "Phone Number:	" << contacts[idx].get_info( 4 ) << std::endl;
-	std::cout << "Darkest Secret:	" << contacts[idx].get_info( 5 ) << std::endl;
+	std::cout << "First Name:	" << _contacts[idx]._get_info( 1 ) << std::endl;
+	std::cout << "Last Name:	" << _contacts[idx]._get_info( 2 ) << std::endl;
+	std::cout << "Nick Name:	" << _contacts[idx]._get_info( 3 ) << std::endl;
+	std::cout << "Phone Number:	" << _contacts[idx]._get_info( 4 ) << std::endl;
+	std::cout << "Darkest Secret:	" << _contacts[idx]._get_info( 5 ) << std::endl;
 	std::cout << "------------------\n";
 	std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
 	return;
@@ -166,11 +166,11 @@ PhoneBook::Contact::Contact( void ) {
 
 PhoneBook::Contact::Contact( std::string fName, std::string lName, std::string nName, 
 	std::string pNumber, std::string secret ) :
-       	firstName(fName), 
-	lastName(lName), 
-	nickName(nName), 
-	phoneNumber(pNumber), 
-	darkestSecret(secret) {
+       	_firstName(fName), 
+		_lastName(lName), 
+		_nickName(nName), 
+		_phoneNumber(pNumber), 
+		_darkestSecret(secret) {
 	
 		return;
 }
@@ -182,17 +182,17 @@ PhoneBook::Contact::Contact( std::string fName, std::string lName, std::string n
 //-----------------------------------------------------------------------------//
 
 /*gets contact info depending on which one is asked*/
-std::string	PhoneBook::Contact::get_info( int info ) const {
+std::string	PhoneBook::Contact::_get_info( int info ) const {
 
 	if (info == 1)
-		return this->firstName;
+		return this->_firstName;
 	if (info == 2)
-		return this->lastName;
+		return this->_lastName;
 	if (info == 3)
-		return this->nickName;
+		return this->_nickName;
 	if (info == 4)
-		return this->phoneNumber;
+		return this->_phoneNumber;
 	if (info == 5)
-		return this->darkestSecret;
+		return this->_darkestSecret;
 	return (NULL);
 }

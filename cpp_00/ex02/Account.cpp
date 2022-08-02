@@ -6,7 +6,7 @@
 int	Account::_nbAccounts;
 int	Account::_totalAmount;
 int	Account::_totalNbDeposits;
-int Account::_totalNbWithdrawals;
+int 	Account::_totalNbWithdrawals;
 
 
 Account::Account( int initial_deposit ) {
@@ -72,7 +72,7 @@ void	Account::_displayTimestamp( void ) {
 
 void	Account::displayAccountsInfos ( void ) {
 	_displayTimestamp();
-	std::cout << "accounts:" << Account::getNbAccounts() // could be Account::getNbAccounts()
+	std::cout << "accounts:" << getNbAccounts() // could be Account::getNbAccounts()
 		<< ";total:" << getTotalAmount()
 		<< ";deposits:" << getNbDeposits()
 		<< ";withdrawals:" << getNbWithdrawals()

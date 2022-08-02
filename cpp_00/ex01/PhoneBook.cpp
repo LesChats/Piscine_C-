@@ -5,20 +5,35 @@
 #include <stdlib.h>
 #include "PhoneBook.hpp"
 
+//-----------------------------------------------------------------------------//
+/*
+**			PHONEBOOK CLASS INSTANCIATION
+*/
+//-----------------------------------------------------------------------------//
+
 PhoneBook::PhoneBook( void ): idx() {
+	
 	std::cout << "PhoneBook constructor called\n";
 	return;
 } // : idx() sets idx at 0
 
 PhoneBook::~PhoneBook( void ) {
+	
 	std::cout << "PhoneBook destructor called\n";
 	return;
 }
 
 PhoneBook::Contact::~Contact( void ) {
+
 	std::cout << "Contact destructor called\n";
 	return;
 }
+
+//--------------------------------------------------------------------------------------//
+/*
+**			PHONEBOOK CLASS METHODS
+*/
+//--------------------------------------------------------------------------------------//
 
 /* Creates a new contact */
 void	PhoneBook::new_contact( void ) {
@@ -71,7 +86,9 @@ void	PhoneBook::new_contact( void ) {
 }
 
 /* Adds a contact in Phonebook after creation */
-void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret ) {
+void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, 
+	std::string phoneNumber, std::string darkestSecret ) {
+
 	int pBookIdx = idx % 8;
 	Contact newContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	contacts[pBookIdx] = newContact;	
@@ -81,8 +98,24 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 	return;
 }
 
+int	PhoneBook::get_idx( void ) const {
+	
+	return idx;
+}
+
+/* Trims the extra characters and replace them by '.' */
+std::string	PhoneBook::is_too_big( int idx, int info ) const {
+	
+	std::string str = contacts[idx].get_info(info);
+	if (str.size() > 10) {
+		str.resize(10);
+		str.replace(str.size() - 1, 1 ,".");
+	}
+	return str;
+}
+
 /* Search contact in Phonebook */
-void	PhoneBook::search_contact( void ) {
+void	PhoneBook::search_contact( void ) const {
 
 	unsigned	idx = 0;
 	char		prov_idx;
@@ -91,7 +124,7 @@ void	PhoneBook::search_contact( void ) {
 	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |\n";
 	std::cout << " ___________________________________________\n";
 	if (get_idx() < 1)
-		return;
+		return; // if empty PhoneBook
 	for (int i = 0; i < 8; ++i) {
 		std::cout << "|" << std::setw(10) << i;
 		std::cout << "|" << std::setw(10) << is_too_big(i, 1);
@@ -119,46 +152,47 @@ void	PhoneBook::search_contact( void ) {
 	return;
 }
 
-/* Trims the extra characters and replace them by '.' */
-std::string	PhoneBook::is_too_big( int idx, int info ) {
-	std::string str = contacts[idx].get_info(info);
-	if (str.size() > 10) {
-		str.resize(10);
-		str.replace(str.size() - 1, 1 ,".");
-	}
-	return str;
-}
-
-int	PhoneBook::get_idx( void ) {
-	return idx;
-}
-
-
-/* Contact class methods */
+//----------------------------------------------------------------------------------//
+/*
+**			CONTACT CLASS INSTANCIATION
+*/
+//----------------------------------------------------------------------------------//
 
 PhoneBook::Contact::Contact( void ) {
+	
 	std::cout << "Contact constructor called\n";
 	return;
 }
 
-PhoneBook::Contact::Contact( std::string fName, std::string lName, std::string nName, std::string pNumber, std::string secret ) :
-       	firstName(fName), lastName(lName), nickName(nName), phoneNumber(pNumber), darkestSecret(secret) {
-			return;
+PhoneBook::Contact::Contact( std::string fName, std::string lName, std::string nName, 
+	std::string pNumber, std::string secret ) :
+       	firstName(fName), 
+	lastName(lName), 
+	nickName(nName), 
+	phoneNumber(pNumber), 
+	darkestSecret(secret) {
+	
+		return;
 }
 
+//-----------------------------------------------------------------------------//
+/*
+**			CONTACT CLASS METHODS
+*/
+//-----------------------------------------------------------------------------//
 
-/*get contact info depending on which is askeds*/
-std::string	PhoneBook::Contact::get_info( int info ) {
+/*gets contact info depending on which one is asked*/
+std::string	PhoneBook::Contact::get_info( int info ) const {
 
 	if (info == 1)
-		return firstName;
+		return this->firstName;
 	if (info == 2)
-		return lastName;
+		return this->lastName;
 	if (info == 3)
-		return nickName;
+		return this->nickName;
 	if (info == 4)
-		return phoneNumber;
+		return this->phoneNumber;
 	if (info == 5)
-		return darkestSecret;
+		return this->darkestSecret;
 	return (NULL);
 }

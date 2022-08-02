@@ -24,10 +24,10 @@ int	main( void ) {
 		else if (choice == "SEARCH" )
 			phoneBook.search_contact();
 		else if (choice == "EXIT" ) {
-			std::cout << " _____________________________________________\n";
-			std::cout << "/                                             \\\n";
+			std::cout << " ______________________________________________\n";
+			std::cout << "/                                              \\\n";
 			std::cout << "| Beware: You have lost all your contacts :O ! |\n";
-			std::cout << "\\_____________________________________________/\n\n";
+			std::cout << "\\______________________________________________/\n\n";
 			break;
 		}
 		std::cout << "What would you like to do ? ADD, SEARCH or EXIT ?\n";

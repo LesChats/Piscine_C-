@@ -141,13 +141,9 @@ PhoneBook::Contact::Contact( void ) {
 	return;
 }
 
-PhoneBook::Contact::Contact( std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret ) {
-	this->firstName = firstName;
-	this->lastName = lastName;
-	this->nickName = nickName;
-	this->phoneNumber = phoneNumber;
-	this->darkestSecret = darkestSecret;
-	return;
+PhoneBook::Contact::Contact( std::string fName, std::string lName, std::string nName, std::string pNumber, std::string secret ) :
+       	firstName(fName), lastName(lName), nickName(nName), phoneNumber(pNumber), darkestSecret(secret) {
+			return;
 }
 
 

@@ -72,7 +72,7 @@ void	Account::_displayTimestamp( void ) {
 
 void	Account::displayAccountsInfos ( void ) {
 	_displayTimestamp();
-	std::cout << "accounts:" << getNbAccounts()
+	std::cout << "accounts:" << Account::getNbAccounts() // could be Account::getNbAccounts()
 		<< ";total:" << getTotalAmount()
 		<< ";deposits:" << getNbDeposits()
 		<< ";withdrawals:" << getNbWithdrawals()

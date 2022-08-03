@@ -50,6 +50,8 @@ void	PhoneBook::new_contact( void ) {
 	if (std::cin.eof())
 		return;
 	input = is_empty( input, "First Name" );
+	if (input == "")
+		return;
 	firstName = input;
 
 	std::cout << "Last Name ?\n";
@@ -57,6 +59,8 @@ void	PhoneBook::new_contact( void ) {
 	if (std::cin.eof())
 		return;
 	input = is_empty( input, "Last Name" );
+	if (input == "")
+		return;
 	lastName = input;
 
 	std::cout << "Nickname ?\n";
@@ -64,6 +68,8 @@ void	PhoneBook::new_contact( void ) {
 	if (std::cin.eof())
 		return;
 	input = is_empty( input, "Nickname" );
+	if (input == "")
+		return;
 	nickName = input;
 
 	std::cout << "Phone Number ?\n";
@@ -71,6 +77,8 @@ void	PhoneBook::new_contact( void ) {
 	if (std::cin.eof())
 		return;
 	input = is_empty( input, "Phone Number" );
+	if (input == "")
+		return;
 	phoneNumber = input;
 
 	std::cout << "Darkest Secret ?\n";
@@ -78,6 +86,8 @@ void	PhoneBook::new_contact( void ) {
 	if (std::cin.eof())
 		return;
 	input = is_empty( input, "Darkest Secret" );
+	if (input == "")
+		return;
 	darkestSecret = input;
 
 	this->_add_contact( firstName, lastName, nickName, phoneNumber, darkestSecret );

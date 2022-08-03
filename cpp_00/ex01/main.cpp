@@ -7,6 +7,9 @@ std::string	is_empty( std::string input, std::string phase ) {
 		std::cout << "Error: " << phase << " cannot be empty.\n";
 		std::cout << phase << " ?\n";
 		std::getline (std::cin, input);
+		if ( std::cin.eof() )
+			return "";
+
 	}
 	return input;
 }

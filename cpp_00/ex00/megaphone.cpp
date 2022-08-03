@@ -9,8 +9,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	std::string str;
+	std::string arg;
 	for (int j = 1; j < ac ; ++j) {
-		std::string arg(av[j]);
+		arg = av[j];
 		str.reserve(str.size() + arg.size() + 1);
 		for (std::string::iterator it = arg.begin(); it != arg.end(); ++it) {
 			str += std::toupper(*it);

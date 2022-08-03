@@ -80,13 +80,13 @@ void	PhoneBook::new_contact( void ) {
 	input = is_empty( input, "Darkest Secret" );
 	darkestSecret = input;
 
-	this->add_contact( firstName, lastName, nickName, phoneNumber, darkestSecret );
+	this->_add_contact( firstName, lastName, nickName, phoneNumber, darkestSecret );
 	std::cout << "Contact successfully added!\n";
 	return;
 }
 
 /* Adds a contact in Phonebook after creation */
-void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::string nickName, 
+void	PhoneBook::_add_contact( std::string firstName, std::string lastName, std::string nickName, 
 	std::string phoneNumber, std::string darkestSecret ) {
 
 	int pBookIdx = this->_idx % 8;
@@ -98,13 +98,13 @@ void	PhoneBook::add_contact( std::string firstName, std::string lastName, std::s
 	return;
 }
 
-int	PhoneBook::get_idx( void ) const {
+int	PhoneBook::_get_idx( void ) const {
 	
 	return this->_idx;
 }
 
 /* Trims the extra characters and replace them by '.' */
-std::string	PhoneBook::is_too_big( int idx, int info ) const {
+std::string	PhoneBook::_is_too_big( int idx, int info ) const {
 	
 	std::string str = _contacts[idx]._get_info(info);
 	if (str.size() > 10) {
@@ -123,13 +123,13 @@ void	PhoneBook::search_contact( void ) const {
 	std::cout << " ___________________________________________\n";
 	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |\n";
 	std::cout << " ___________________________________________\n";
-	if (get_idx() < 1)
+	if (this->_get_idx() < 1)
 		return; // if empty PhoneBook
 	for (int i = 0; i < 8; ++i) {
 		std::cout << "|" << std::setw(10) << i;
-		std::cout << "|" << std::setw(10) << is_too_big(i, 1);
-		std::cout << "|" << std::setw(10) << is_too_big(i, 2);
-		std::cout << "|" << std::setw(10) << is_too_big(i, 3);
+		std::cout << "|" << std::setw(10) << _is_too_big(i, 1);
+		std::cout << "|" << std::setw(10) << _is_too_big(i, 2);
+		std::cout << "|" << std::setw(10) << _is_too_big(i, 3);
 		std::cout << "|\n";
 	}
 	std::cout << " ___________________________________________\n";

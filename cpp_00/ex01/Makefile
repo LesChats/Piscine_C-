@@ -12,7 +12,7 @@ OBJ_DIR =
 SRC :=	PhoneBook.cpp \
 	main.cpp
 
-OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRC))
+OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o, $(SRC))
 
 
 # ----- COLORS -----

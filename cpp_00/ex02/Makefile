@@ -10,9 +10,9 @@ SRC_DIR =
 OBJ_DIR = 
 
 SRC :=	Account.cpp \
-	test.cpp
+	tests.cpp
 
-OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRC))
+OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o, $(SRC))
 
 
 # ----- COLORS -----
